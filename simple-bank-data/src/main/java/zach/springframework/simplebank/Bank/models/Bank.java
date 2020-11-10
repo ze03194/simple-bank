@@ -1,15 +1,25 @@
-package com.simplebank.simplebank.models;
+package zach.springframework.simplebank.Bank.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import zach.springframework.simplebank.User.models.User;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "BANK_TABLE")
 public class Bank {
     @Id
+    @Column(name = "bank_id")
     private String bankName;
     private int numOfUsers;
     private int numOfAccounts;
     private double totalCash;
+
+
+    @ManyToMany(mappedBy = "banks")
+    @JsonIgnore
+    private List<User> users;
 
     public Bank() {
     }
@@ -19,6 +29,20 @@ public class Bank {
         this.numOfUsers = numOfUsers;
         this.numOfAccounts = numOfAccounts;
         this.totalCash = totalCash;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+        this.numOfUsers++;
+        this.totalCash += user.getBalance();
     }
 
     public String getBankName() {

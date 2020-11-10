@@ -1,4 +1,4 @@
-package com.simplebank.simplebank;
+package zach.springframework.simplebank;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

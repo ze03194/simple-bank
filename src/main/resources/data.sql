@@ -1,0 +1,7 @@
+INSERT INTO BANK_TABLE (BANK_ID, NUM_OF_ACCOUNTS, NUM_OF_USERS, TOTAL_CASH) VALUES
+    ('FrostBank', 0, 0, 0),
+    ('BankofAmerica', 0, 0, 0),
+    ('Chase', 0, 0, 0);
+
+INSERT INTO USER_TABLE (USER_ID, BALANCE, DATE_OF_BIRTH, FIRST_NAME, LAST_NAME, PASSWORD, SECURITY_PIN) VALUES
+    ('jspence300', 20, 12/25/1993, 'Josh', 'Spence', 'password123', 1993);

@@ -1,7 +1,7 @@
-package com.simplebank.simplebank.services;
+package zach.springframework.simplebank.User.services;
 
-import com.simplebank.simplebank.models.User;
-import com.simplebank.simplebank.repositories.UserRepository;
+import zach.springframework.simplebank.User.models.User;
+import zach.springframework.simplebank.User.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,9 +19,9 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public Optional<User> getUser(String userName) {
+    public Optional<User> getUser(String name) {
 
-        return userRepository.findById(userName);
+        return userRepository.findById(name);
     }
 
     public Map<String, User> getAllUsers() {
@@ -33,8 +33,8 @@ public class UserService {
 
     }
 
-    public void deleteUser(String userName){
-        userRepository.deleteById(userName);
+    public void deleteUser(String name){
+        userRepository.deleteById(name);
     }
 
 }

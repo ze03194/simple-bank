@@ -1,15 +1,29 @@
-package com.simplebank.simplebank.models;
+package zach.springframework.simplebank.User.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import zach.springframework.simplebank.Bank.models.Bank;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "USER_TABLE")
 public class User {
     @Id
+    @Column(name = "user_id")
     private String userName;
-    private String firstName, lastName, password, securityPin, dateOfBirth;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String securityPin;
+    private String dateOfBirth;
     private double balance = 0;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinTable(name = "user_bank",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "bank_id")
+    )
+    private List<Bank> banks;
 
     public User() {
         this.balance = 0;
@@ -25,6 +39,17 @@ public class User {
         this.balance = balance;
     }
 
+    public void addBank(Bank bank){
+        banks.add(bank);
+    }
+
+    public List<Bank> getBanks() {
+        return banks;
+    }
+
+    public void setBanks(List<Bank> banks) {
+        this.banks = banks;
+    }
 
     public String getUserName() {
         return userName;
