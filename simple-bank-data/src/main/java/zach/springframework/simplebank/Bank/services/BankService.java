@@ -1,10 +1,10 @@
 package zach.springframework.simplebank.Bank.services;
 
-import zach.springframework.simplebank.Bank.models.Bank;
-import zach.springframework.simplebank.User.models.User;
-import zach.springframework.simplebank.Bank.repositories.BankRepository;
-import zach.springframework.simplebank.User.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+import zach.springframework.simplebank.Bank.models.Bank;
+import zach.springframework.simplebank.Bank.repositories.BankRepository;
+import zach.springframework.simplebank.User.models.User;
+import zach.springframework.simplebank.User.repositories.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,8 @@ public class BankService {
         bankRepository.save(bank);
     }
 
-    public Optional<Bank> getBank(String bankName) {
-        return bankRepository.findById(bankName);
+    public Optional<Bank> getBank(String name) {
+        return bankRepository.findById(name);
     }
 
     public List<Bank> getAllBanks() {
@@ -36,11 +36,11 @@ public class BankService {
         return banks;
     }
 
-    public void deleteBank(String bankName) {
-        bankRepository.deleteById(bankName);
+    public void deleteBank(String name) {
+        bankRepository.deleteById(name);
     }
 
-    public void registerUser(String name, User user){
+    public void registerUser(String name, User user) {
 
         Bank bank = bankRepository.findByBankName(name);
         bank.addUser(user);
@@ -52,7 +52,7 @@ public class BankService {
 
     }
 
-    public List<User> getAllBankUsers(String name){
+    public List<User> getAllBankUsers(String name) {
         Bank bank = bankRepository.findByBankName(name);
         return bank.getUsers();
     }

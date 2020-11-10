@@ -1,10 +1,12 @@
 package zach.springframework.simplebank.User.services;
 
+import org.springframework.stereotype.Service;
 import zach.springframework.simplebank.User.models.User;
 import zach.springframework.simplebank.User.repositories.UserRepository;
-import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -33,7 +35,7 @@ public class UserService {
 
     }
 
-    public void deleteUser(String name){
+    public void deleteUser(String name) {
         userRepository.deleteById(name);
     }
 
